@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
-    const { id } = params;
+export async function POST(
+    req: NextRequest,
+    context: { params: { id: string } } // النوع الصحيح
+) {
+    const { id } = context.params; // استخدمه مباشرة
     const body = await req.json();
     const { title, content } = body;
 
@@ -27,6 +30,10 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
         return NextResponse.json(data);
     } catch (err) {
         console.error(err);
-        return NextResponse.json({ error: "AI rewrite failed" }, { status: 500 });
+        return NextResponse.json(
+            { error: "AI rewrite failed" },
+            { status: 500 }
+        );
     }
 }
+
