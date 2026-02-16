@@ -1,14 +1,24 @@
+import { prisma } from "@/lib/prisma";
 import { FaBlog } from "react-icons/fa";
 import Link from "next/link";
 
 async function getFeaturedPost() {
-    const res = await fetch("http://localhost:3000/api/featured-post", {
-        cache: "no-store",
-    });
+    try {
+        const post = await prisma.post.findFirst({
+            where: {
+                featured: true,
+                published: true,
+            },
+            orderBy: {
+                createdAt: "desc",
+            },
+        });
 
-    if (!res.ok) return null;
-
-    return res.json();
+        return post;
+    } catch (error) {
+        console.error("Error fetching featured post:", error);
+        return null;
+    }
 }
 
 export default async function HeroSection() {
@@ -43,8 +53,8 @@ export default async function HeroSection() {
                     <div className="relative lg:w-1/2 flex justify-center">
                         <div
                             className="w-80 h-80 rounded-full flex items-center justify-center
-                shadow-lg bg-linear-to-tr from-primary via-primary/75 to-primary/55
-                animate-bounce-slow"
+                            shadow-lg bg-linear-to-tr from-primary via-primary/75 to-primary/55
+                            animate-bounce-slow"
                         >
                             <FaBlog size={64} className="text-white" />
                         </div>
