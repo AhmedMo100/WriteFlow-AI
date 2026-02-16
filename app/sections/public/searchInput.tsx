@@ -1,9 +1,10 @@
 "use client";
 
-interface SearchInputProps {
+export interface SearchInputProps {
     value: string;
-    onChange: (val: string) => void;
+    onChange: React.Dispatch<React.SetStateAction<string>>;
     placeholder?: string;
+    className?: string;
 }
 
 export default function SearchInput({ value, onChange, placeholder = "Search..." }: SearchInputProps) {

@@ -6,6 +6,7 @@ import { FaSort } from "react-icons/fa";
 interface SortDropdownProps {
     selected: string;
     onSelect: (val: string) => void;
+    className?: string;
 }
 
 const sortOptions = ["Newest", "Oldest", "Most Liked", "Featured"];
