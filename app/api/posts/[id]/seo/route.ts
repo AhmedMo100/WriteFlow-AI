@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 // SEO POST route مضبوط للـ Next.js 16 App Router
-export async function POST_SEO(
+export async function POST(
     req: NextRequest,
     context: { params: Promise<{ id: string }> } // النوع الصح عشان الـ App Router
 ) {
