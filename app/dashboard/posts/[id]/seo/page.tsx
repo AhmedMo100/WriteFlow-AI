@@ -22,10 +22,17 @@ export default async function SeoPage(
     notFound();
   }
 
+  // حول الـ null لـ undefined
+  const formattedPost = {
+    ...post,
+    seoTitle: post.seoTitle ?? undefined,
+    seoDescription: post.seoDescription ?? undefined,
+  };
+
   return (
     <div className="max-w-3xl mx-auto py-8">
       <h1 className="text-2xl font-bold mb-6">SEO Optimization</h1>
-      <SeoForm post={post} />
+      <SeoForm post={formattedPost} />
     </div>
   );
 }
