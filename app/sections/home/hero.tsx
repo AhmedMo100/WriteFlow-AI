@@ -30,10 +30,7 @@ export default async function HeroSection() {
                 {/* Top Hero Content */}
                 <div className="flex flex-col lg:flex-row items-center gap-14 lg:gap-20 pb-16">
                     <div className="lg:w-1/2 text-center lg:text-left space-y-6">
-                        <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                            Build & Share Your Blog{" "}
-                            <span className="text-primary">Like a Pro</span>
-                        </h1>
+
 
                         <p className="text-lg md:text-xl text-textSecondary">
                             Create high-quality content effortlessly, leverage AI tools,
