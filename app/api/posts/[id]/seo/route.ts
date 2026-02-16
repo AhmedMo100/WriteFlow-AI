@@ -1,15 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// لو عايز ملف SEO بنفس الطريقة:
+// SEO POST route مضبوط للـ Next.js 16 App Router
 export async function POST_SEO(
     req: NextRequest,
-    context: { params: { id: string } }
+    context: { params: Promise<{ id: string }> } // النوع الصح عشان الـ App Router
 ) {
-    const { id } = context.params;
-    const body = await req.json();
-    const { title, content } = body;
-
     try {
+        // استخرج الـ id من الـ context
+        const { id } = await context.params;
+        const body = await req.json();
+        const { title, content } = body;
+
+        // استدعاء API لتحسين الـ SEO
         const res = await fetch("https://api.openrouter.ai/v1/chat/completions", {
             method: "POST",
             headers: {
@@ -30,7 +32,7 @@ export async function POST_SEO(
         const data = await res.json();
         return NextResponse.json(data);
     } catch (err) {
-        console.error(err);
+        console.error("SEO enhancement failed:", err);
         return NextResponse.json(
             { error: "SEO enhancement failed" },
             { status: 500 }

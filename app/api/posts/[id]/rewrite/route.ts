@@ -2,13 +2,15 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(
     req: NextRequest,
-    context: { params: { id: string } } // النوع الصحيح
+    context: { params: Promise<{ id: string }> } // النوع الصح
 ) {
-    const { id } = context.params; // استخدمه مباشرة
-    const body = await req.json();
-    const { title, content } = body;
-
     try {
+        // استخرج الـ id من الـ context
+        const { id } = await context.params;
+        const body = await req.json();
+        const { title, content } = body;
+
+        // استدعاء API لتحسين إعادة كتابة المحتوى
         const res = await fetch("https://api.openrouter.ai/v1/chat/completions", {
             method: "POST",
             headers: {
@@ -29,11 +31,10 @@ export async function POST(
         const data = await res.json();
         return NextResponse.json(data);
     } catch (err) {
-        console.error(err);
+        console.error("AI rewrite failed:", err);
         return NextResponse.json(
             { error: "AI rewrite failed" },
             { status: 500 }
         );
     }
 }
-
