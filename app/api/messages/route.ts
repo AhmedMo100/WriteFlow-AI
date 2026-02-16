@@ -16,13 +16,19 @@ export async function GET(req: NextRequest) {
 }
 
 // DELETE a message by id
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
-  const { id } = params;
-
+export async function DELETE(req: NextRequest) {
   try {
+    // id بتجيلك من query params بدل { params } في App Router الجديد
+    const url = new URL(req.url);
+    const id = url.searchParams.get("id");
+    if (!id) {
+      return NextResponse.json({ error: "Missing id" }, { status: 400 });
+    }
+
     await prisma.contactMessage.delete({
       where: { id },
     });
+
     return NextResponse.json({ message: "Deleted successfully" });
   } catch (err) {
     console.error("Failed to delete message:", err);
