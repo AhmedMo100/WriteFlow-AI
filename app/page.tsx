@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import Footer from "./sections/public/footer";
 import Header from "./sections/public/header";
 import Hero from "./sections/home/hero";
