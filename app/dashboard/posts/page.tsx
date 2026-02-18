@@ -110,11 +110,13 @@ export default function AllPostsPage() {
                     className="rounded-t-2xl w-full h-44 object-cover"
                   />
                 )}
+
                 <CardHeader className="px-6 pt-4">
                   <CardTitle className="text-lg font-semibold text-text-primary">
                     {post.title}
                   </CardTitle>
                 </CardHeader>
+
                 <CardContent className="px-6 pb-4 space-y-3">
 
                   {/* Post Content */}
@@ -146,10 +148,24 @@ export default function AllPostsPage() {
 
                   {/* Actions */}
                   <div className="flex flex-wrap gap-2 mt-3">
+
+                    {/* ✅ NEW EDIT BUTTON */}
+                    <Button
+                      size="sm"
+                      className="bg-blue-600 text-white hover:bg-blue-700 transition"
+                      onClick={() =>
+                        router.push(`/dashboard/posts/${post.id}/edit-post`)
+                      }
+                    >
+                      Edit
+                    </Button>
+
                     <Button
                       size="sm"
                       className="bg-primary text-white hover:bg-primary/90 transition"
-                      onClick={() => router.push(`/dashboard/posts/${post.id}/rewrite`)}
+                      onClick={() =>
+                        router.push(`/dashboard/posts/${post.id}/rewrite`)
+                      }
                     >
                       Rewrite
                     </Button>
@@ -157,7 +173,9 @@ export default function AllPostsPage() {
                     <Button
                       size="sm"
                       className="bg-accent text-white hover:bg-accent/90 transition"
-                      onClick={() => router.push(`/dashboard/posts/${post.id}/seo`)}
+                      onClick={() =>
+                        router.push(`/dashboard/posts/${post.id}/seo`)
+                      }
                     >
                       SEO
                     </Button>
@@ -177,6 +195,7 @@ export default function AllPostsPage() {
                     >
                       Delete
                     </Button>
+
                   </div>
 
                 </CardContent>
