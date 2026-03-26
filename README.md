@@ -1,8 +1,3 @@
-أكيد، ملف الـ README هو "واجهة" مشروعك، وعشان يكون احترافي لازم يوضح المشكلة، الحل، والتقنيات المستخدمة بطريقة بصرية منظمة.
-
-إليك كود ملف README.md جاهز، تقدر تنسخه وتحطه في مشروعك فوراً:
-
-Markdown
 # ✍️ WriteFlow AI - Smart Content Generation Platform
 
 **WriteFlow AI** is a professional Full-Stack platform designed to empower content creators by leveraging the power of Artificial Intelligence. Built with a modern tech stack, it provides a seamless and high-performance experience for generating creative ideas and structured content.
@@ -81,10 +76,3 @@ If you liked this project, feel free to leave a ⭐ on GitHub!
 
 
 ---
-
-### 💡 نصيحة سريعة لرفع الملف:
-1.  افتح ملف `README.md` الموجود في فولدر المشروع عندك.
-2.  امسح اللي فيه وحط الكود ده مكانه.
-3.  **الصور:** في جزء الـ `Preview` لو عندك صورة للموقع (Screenshot) ارفعها على جيت هب في فولدر اسمه `public/assets` وحط اللينك بتاعها مكان `your-image-url-here` عشان يظهر شكل الموقع في الـ README.
-
-**هل تحب أساعدك في صياغة "عن نفسي" (About Me) لبروفايلك على جيت هب كمان؟**
